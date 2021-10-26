@@ -7,7 +7,7 @@ import UserProfile from './components/pages/userProfile';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <LogIn />
+      <UserProfile />
       {/* <SideBar /> */}
     </ThemeProvider>
   );

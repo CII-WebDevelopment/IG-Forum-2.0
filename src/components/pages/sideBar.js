@@ -3,12 +3,8 @@ import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Stack } from '@mui/material';
 import { Typography } from '@mui/material';
-import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
-import { ListItem } from '@mui/material';
-import { Divider } from '@mui/material';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import Paper from '@mui/material/Paper';
@@ -65,8 +61,8 @@ const SideBar = () => {
     <div className='container-styling'>
       <Paper
         sx={{
-          maxWidth: '20%',
-          bgcolor: 'white',
+          maxWidth: '100%',
+          bgcolor: 'black',
           opacity: '0.84',
           height: '100%',
         }}
