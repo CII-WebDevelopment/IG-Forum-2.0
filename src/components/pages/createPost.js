@@ -1,12 +1,11 @@
 import * as React from 'react';
-import '../pages/login.css';
+import '../pages/createPost.css';
 import { styled } from '@mui/material/styles';
 import NavBar from './navBar'
 import SideBar from './sideBar';
 import { Grid, Paper, Avatar, Typography, Stack, TextField, Chip } from '@mui/material';
 import { useState } from 'react';
 import { InputLabel, Select, MenuItem, FormControl } from '@mui/material';
-
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -54,7 +53,7 @@ const CreatePost = () => {
         return <div>{postChips}</div>;
     }
   return (
-    <div className='container background-div'>
+    <div>
         <NavBar />
         <Grid container spacing={4} sx={{height: '100%', width: '100%'}}>
         <Grid item xs={3}>
