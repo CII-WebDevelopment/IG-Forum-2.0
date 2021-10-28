@@ -8,6 +8,7 @@ import { Box } from '@mui/system';
 import { Stack } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Link } from '@mui/material';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -42,11 +43,12 @@ const Navbar = () => {
             <Box
               sx={{
                 color: 'white',
-                backgroundColor: 'white',
+                backgroundColor: 'black',
                 height: '40px',
                 width: '350px',
               }}
             >
+              {'                      '}
               <faSearch />
               <TextField
                 id='standard-basic'
