@@ -9,6 +9,8 @@ import { Avatar, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import { Stack } from '@mui/material';
 import { Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -92,6 +94,7 @@ function PostList(props) {
               >
                 Like
               </Button>
+              <FontAwesomeIcon icon={faCoffee} />
             </Item>
             <Item>
               <Button
