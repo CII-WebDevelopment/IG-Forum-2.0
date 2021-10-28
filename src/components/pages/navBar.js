@@ -102,6 +102,17 @@ const Navbar = () => {
               </Typography>
             </Item>
           </Link>
+          <Link href='create-new-post' underline='none'>
+              <Item sx={{ backgroundColor: 'black', height: '10px'}}>
+                  <Typography 
+                    variant='h6'
+                    gutterBottom
+                    component='div'
+                    sx={{color: 'white'}}>
+                        NEW POST
+                    </Typography>
+              </Item>
+          </Link>
         </Stack>
       </Paper>
     </div>

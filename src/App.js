@@ -4,11 +4,19 @@ import theme from './theme';
 import { ThemeProvider } from '@mui/material';
 import SideBar from './components/pages/sideBar';
 import UserProfile from './components/pages/userProfile';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import CreatePost from './components/pages/createPost';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <UserProfile />
-      {/* <SideBar /> */}
+        <Router basename={'/'}>
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/`}
+            component={UserProfile}
+          />
+          <Route exact path={`${process.env.PUBLIC_URL}/create-new-post`} component={CreatePost} />
+          </Router>
     </ThemeProvider>
   );
 }
