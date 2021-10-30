@@ -6,18 +6,27 @@ import SideBar from './components/pages/sideBar';
 import UserProfile from './components/pages/userProfile';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CreatePost from './components/pages/createPost';
-import UserRegistration from './components/pages/userRegistration'
+import UserRegistration from './components/pages/userRegistration';
 function App() {
   return (
     <ThemeProvider theme={theme}>
-        <Router basename={'/'}>
-          <Route
-            exact
-            path={`${process.env.PUBLIC_URL}/`}
-            component={UserRegistration}
-          />
-          <Route exact path={`${process.env.PUBLIC_URL}/create-new-post`} component={CreatePost} />
-          </Router>
+      <Router basename={'/'}>
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/`}
+          component={UserRegistration}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/create-new-post`}
+          component={CreatePost}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/user-profile`}
+          component={UserProfile}
+        />
+      </Router>
     </ThemeProvider>
   );
 }

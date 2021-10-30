@@ -7,6 +7,8 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
+import { ExpandLess } from '@material-ui/icons';
+import { ExpandMore } from '@material-ui/icons';
 import Paper from '@mui/material/Paper';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -20,42 +22,13 @@ const hashtags = [
   ['Research', 'uno', 'des'],
 ];
 
-// const handleClick = () => {
-//   setOpen(!open);
-// };
-
-// const listHashtags = hashtags.map((hashtag) => {
-//   return (
-//     <div>
-//       <ListItemButton onClick={handleClick}>
-//         <ListItemText primary='hashtag1' />
-
-//         {open ? <ExpandLess /> : <ExpandMore />}
-//       </ListItemButton>
-//       <Collapse in={close} timeout='auto' unmountOnExit>
-//         <List component='div' disablePadding>
-//           {hashtag.map((each) => {
-//             return (
-//               <>
-//                 <ListItemButton sx={{ pl: 4 }}>
-//                   <ListItemText primary={each} />{' '}
-//                 </ListItemButton>
-
-//                 <ListItemButton sx={{ pl: 4 }}>
-//                   <ListItemText primary={hashtag[0]}></ListItemText>{' '}
-//                 </ListItemButton>
-//               </>
-//             );
-//           })}
-//         </List>{' '}
-//       </Collapse>{' '}
-//     </div>
-//   );
-// });
-
 const SideBar = () => {
   const [Firstname, setFirstname] = useState('My');
   const [Lastname, setLastname] = useState('Name');
+  const [open, setOpen] = useState(true);
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   return (
     <div className='container-styling'>
@@ -90,37 +63,26 @@ const SideBar = () => {
           <Item sx={{ color: 'white', bgcolor: 'black' }}>
             <nav aria-label='secondary mailbox folders'>
               <List>
-                {hashtags.map((hashtag) => {
-                  return (
-                    <div>
-                      {' '}
-                      <ListItemButton>
-                        <ListItemText primary='hashtag1' />
-                      </ListItemButton>{' '}
-                      <Collapse timeout='auto' unmountOnExit>
-                        {' '}
-                        <List component='div' disablePadding>
-                          {' '}
-                          {hashtag.map((each) => {
-                            return (
-                              <>
-                                <ListItemButton sx={{ pl: 4 }}>
-                                  <ListItemText primary={each} />{' '}
-                                </ListItemButton>
+                <ListItemButton component='a' href='#simple-list'>
+                  <ListItemText primary='Spam' />
+                </ListItemButton>
+                <ListItemButton onClick={handleClick}>
+                  <ListItemText primary='Inbox' />
+                  {open ? <ExpandMore /> : <ExpandLess />}
+                </ListItemButton>
+                <Collapse in={open} timeout='auto' unmountOnExit>
+                  <List component='div' disablePadding>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemText primary='Starred' />
+                    </ListItemButton>
+                  </List>
 
-                                <ListItemButton sx={{ pl: 4 }}>
-                                  <ListItemText
-                                    primary={hashtag[0]}
-                                  ></ListItemText>{' '}
-                                </ListItemButton>
-                              </>
-                            );
-                          })}
-                        </List>{' '}
-                      </Collapse>{' '}
-                    </div>
-                  );
-                })}
+                  <List component='div' disablePadding>
+                    <ListItemButton sx={{ pl: 8 }}>
+                      <ListItemText primary='Starred' />
+                    </ListItemButton>
+                  </List>
+                </Collapse>
               </List>
             </nav>
           </Item>
