@@ -6,6 +6,7 @@ import SideBar from './components/pages/sideBar';
 import UserProfile from './components/pages/userProfile';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CreatePost from './components/pages/createPost';
+import UserRegistration from './components/pages/userRegistration'
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -13,7 +14,7 @@ function App() {
           <Route
             exact
             path={`${process.env.PUBLIC_URL}/`}
-            component={UserProfile}
+            component={UserRegistration}
           />
           <Route exact path={`${process.env.PUBLIC_URL}/create-new-post`} component={CreatePost} />
           </Router>
