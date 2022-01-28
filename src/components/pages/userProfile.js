@@ -9,6 +9,8 @@ import { Avatar, Typography } from '@mui/material';
 import { Grid } from '@mui/material';
 import { Stack } from '@mui/material';
 import { Button } from '@mui/material';
+import { Box } from '@mui/material';
+import { Link } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
@@ -155,6 +157,23 @@ const UserProfile = () => {
   return (
     <div className='container background-div'>
       <Navbar></Navbar>
+      <br />
+      <br />
+      <Box textAlign='center'>
+        <Button variant="contained" color="primary">
+          <Link href='edit-profile' underline='none'>
+                  <Item sx={{height: '35px'}}>
+                      <Typography 
+                        variant='h6'
+                        gutterBottom
+                        component='div'
+                        sx={{color: 'white'}}>
+                            EDIT PROFILE
+                        </Typography>
+                  </Item>
+          </Link>
+        </Button>
+      </Box>
       <Grid container spacing={4}>
         <Grid item xs={3}>
           <Item

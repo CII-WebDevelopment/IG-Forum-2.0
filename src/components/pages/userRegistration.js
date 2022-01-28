@@ -4,7 +4,7 @@ import '../pages/login.css';
 import { styled } from '@mui/material/styles';
 import NavBar from './navBar'
 import SideBar from './sideBar';
-import { Grid, Paper, Avatar, Typography, Stack, TextField, Chip } from '@mui/material';
+import { Grid, Paper, Avatar, Typography, Stack, TextField, Chip, Button, Link } from '@mui/material';
 import { useState } from 'react';
 import { InputLabel, Box, Select, MenuItem, FormControl } from '@mui/material';
 import FormHelperText from '@mui/material/FormHelperText'
@@ -68,7 +68,7 @@ const UserRegistration = () => {
                         opacity: '0.94',
                         maxWidth: '100%',
                         borderRadius: '20px',
-                        }}><Typography variant='h5'>User Registration</Typography>
+                        }}><Typography variant='h5'>USER REGISTRATION</Typography>
                     </Item>
                     <br />
                     <br />
@@ -85,7 +85,7 @@ const UserRegistration = () => {
                                 <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
                                     <Stack direction='row' spacing={2}>
                                         <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px', marginTop: '10px'}}>
-                                            <Typography variant='h6'>First Name: </Typography>
+                                            <Typography variant='h6'>Full Name: </Typography>
                                         </Item>
                                     {/*add value and onChange*/}
                                         <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',marginTop: '10px'}}>
@@ -96,17 +96,17 @@ const UserRegistration = () => {
                             </Grid>
                             <Grid item xs={6}>
                                 <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
-                                <Stack direction='row' spacing={2}>
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',marginTop: '10px'}}>
-                                            <Typography variant='h6'>Last Name: </Typography>
+                                    <Stack direction='row' spacing={2}>
+                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px', marginTop: '10px'}}>
+                                            <Typography variant='h6'>Password: </Typography>
                                         </Item>
                                     {/*add value and onChange*/}
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
+                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',marginTop: '10px'}}>
                                             <TextField id="first name" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '300px'}}/>
                                         </Item>
                                     </Stack>
                                 </Item>
-                            </Grid>
+                            </Grid> 
                         </Grid>
                     </Item>
                     <br />
@@ -119,7 +119,7 @@ const UserRegistration = () => {
                         borderRadius: '20px',
                         }}>
                         <Grid container spacing={2}>
-                            <Grid item xs={6}>
+                            <Grid item xs={8}>
                                 <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '100%',borderRadius: '20px',}}>
                                     <Stack direction='row' spacing={2}>
                                         <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '100%', borderRadius: '20px',marginTop: '10px'}}>
@@ -127,12 +127,12 @@ const UserRegistration = () => {
                                         </Item>
                                     {/*add value and onChange*/}
                                         <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '100%', borderRadius: '20px',}}>
-                                            <TextField id="college-id" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '400px'}}/>
+                                            <TextField id="college-id" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '500px'}}/>
                                         </Item>
                                     </Stack>
                                 </Item>
                             </Grid>
-                            <Grid item xs={3}>
+                            <Grid item xs={4}>
                                 <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '100%',borderRadius: '20px',marginLeft: '20px'}}>
                                 <Stack direction='row' spacing={2}>
                                         <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '100%', borderRadius: '20px',marginTop: '10px'}}>
@@ -155,34 +155,6 @@ const UserRegistration = () => {
                                         </Item>
                                     </Stack>
                                 </Item>
-                            </Grid> 
-                            <Grid item xs={3}>
-                                <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '100%',borderRadius: '20px',}}>
-                                <Stack direction='row' spacing={2}>
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '100%', borderRadius: '20px',marginTop: '10px'}}>
-                                            <Typography variant='h6'>Branch: </Typography>
-                                        </Item>
-                                    {/*add value and onChange*/}
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '100%', borderRadius: '20px',}}>
-                                            <FormControl sx={{ m: 1, minWidth: 120 }}>
-                                                <Select displayEmpty inputProps={{ 'aria-label': 'Without label' }} sx={{bgcolor: 'white'}}>
-                                                    <MenuItem value="">
-                                                        <em>Choose</em>
-                                                    </MenuItem>
-                                                    <MenuItem value={1}>CSE</MenuItem>
-                                                    <MenuItem value={2}>ECE</MenuItem>
-                                                    <MenuItem value={3}>EEE</MenuItem>
-                                                    <MenuItem value={4}>MECH</MenuItem>
-                                                    <MenuItem value={4}>MME</MenuItem>
-                                                    <MenuItem value={4}>Chemical</MenuItem>
-                                                    <MenuItem value={4}>BioTech</MenuItem>
-                                                    <MenuItem value={4}>Civil</MenuItem>
-                                                </Select>
-                                                <FormHelperText>Without label</FormHelperText>
-                                            </FormControl>
-                                        </Item>
-                                    </Stack>
-                                </Item>
                             </Grid>
                         </Grid>
                     </Item>
@@ -199,50 +171,25 @@ const UserRegistration = () => {
                             <Grid item xs={6}>
                                 <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
                                     <Stack direction='row' spacing={2}>
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <Typography variant='h6'>GitHub Profile Link: </Typography>
+                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px', marginTop: '10px'}}>
+                                            <Typography variant='h6'>Roll No: </Typography>
                                         </Item>
                                     {/*add value and onChange*/}
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <TextField id="GitHub-link" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '300px'}}/>
-                                        </Item>
-                                    </Stack>
-                                </Item>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
-                                <Stack direction='row' spacing={2}>
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <Typography variant='h6'>LinkedIn Profile Link: </Typography>
-                                        </Item>
-                                    {/*add value and onChange*/}
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <TextField id="linkedin-link" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '300px'}}/>
-                                        </Item>
-                                    </Stack>
-                                </Item>
-                            </Grid>
-                        </Grid>
-                    </Item>
-                    <br />
-                    <br />
-                    <Item sx={{
-                        bgcolor: 'transparent',
-                        color: 'white',
-                        opacity: '0.94',
-                        maxWidth: '100%',
-                        borderRadius: '20px',
-                        }}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
-                                    <Stack direction='row' spacing={2}>
                                         <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',marginTop: '10px'}}>
-                                            <Typography variant='h6'>Bio: </Typography>
+                                            <TextField id="first name" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '300px'}}/>
+                                        </Item>
+                                    </Stack>
+                                </Item>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
+                                    <Stack direction='row' spacing={2}>
+                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px', marginTop: '10px'}}>
+                                            <Typography variant='h6'>Reg No: </Typography>
                                         </Item>
                                     {/*add value and onChange*/}
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <TextField id="GitHub-link" label="" multiline maxRows={3} sx={{bgcolor: 'white', borderRadius: '10px', width: '800px'}}/>
+                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',marginTop: '10px'}}>
+                                            <TextField id="first name" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '300px'}}/>
                                         </Item>
                                     </Stack>
                                 </Item>
@@ -259,78 +206,24 @@ const UserRegistration = () => {
                         borderRadius: '20px',
                         }}>
                         <Grid container spacing={2}>
-                            <Grid item xs={6}>
-                                <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
-                                    <Stack direction='row' spacing={2}>
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <Typography variant='h6'>GitHub Profile Link: </Typography>
-                                        </Item>
-                                    {/*add value and onChange*/}
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <TextField id="linkedin-link" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '300px'}}/>
-                                        </Item>
-                                    </Stack>
-                                </Item>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Item sx={{bgcolor: 'transparent',color: 'white',opacity: '0.94',maxWidth: '80%',borderRadius: '20px',}}>
-                                <Stack direction='row' spacing={2}>
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <Typography variant='h6'>LinkedIn Profile Link: </Typography>
-                                        </Item>
-                                    {/*add value and onChange*/}
-                                        <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '80%', borderRadius: '20px',}}>
-                                            <TextField id="linkedin-link" label="" sx={{bgcolor: 'white', borderRadius: '10px', width: '300px'}}/>
-                                        </Item>
-                                    </Stack>
-                                </Item>
+                            <Grid item xs={15}>
+                                <Box textAlign='center'>
+                                    <Button variant="contained">
+                                    <Link href='submit' underline='none'>
+                                            <Item sx={{height: '30px'}}>
+                                                <Typography 
+                                                    variant='h6'
+                                                    gutterBottom
+                                                    component='div'
+                                                    sx={{color: 'white'}}>
+                                                        SUBMIT
+                                                    </Typography>
+                                            </Item>
+                                    </Link>
+                                    </Button>
+                                </Box>
                             </Grid>
                         </Grid>
-                    </Item>
-                    <br />
-                    <br />
-                    <Item sx={{
-                        bgcolor: 'transparent',
-                        color: 'white',
-                        opacity: '0.94',
-                        maxWidth: '100%',
-                        borderRadius: '20px',
-                        }}>
-                        <Stack direction='row'>
-                                <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '100%', borderRadius: '20px', margin: '10px', marginTop: '20px'}}>
-                                    <Typography variant='h6'>Choose all Clubs and Associations you are a part of: </Typography>
-                                </Item>
-                                <Item sx={{bgcolor: 'transparent', color: 'white',opacity: '0.94', maxWidth: '100%', borderRadius: '20px',}}>       
-                                    <FormControl sx={{ m: 1, width: 550, borderRadius: '20px' }}>
-                                        <InputLabel></InputLabel>
-                                        <Select
-                                        sx={{bgcolor: 'white', borderRadius: '20px'}}
-                                        id="demo-multiple-chip"
-                                        multiple
-                                        value={Clubs}
-                                        onChange={handleChange}
-                                        input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
-                                        renderValue={(selected) => (
-                                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                            {selected.map((value) => (
-                                                <Chip key={value} label={value} />
-                                            ))}
-                                            </Box>
-                                        )}
-                                        MenuProps={MenuProps}
-                                        >
-                                        {allClubs.map((name) => (
-                                            <MenuItem
-                                            key={name}
-                                            value={name}
-                                            >
-                                            {name}
-                                            </MenuItem>
-                                        ))}
-                                        </Select>
-                                    </FormControl>
-                                </Item>
-                            </Stack>
                     </Item>
                 </Stack>
             </Paper>

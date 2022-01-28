@@ -4,6 +4,7 @@ import theme from './theme';
 import { ThemeProvider } from '@mui/material';
 import SideBar from './components/pages/sideBar';
 import UserProfile from './components/pages/userProfile';
+import EditProfile from './components/pages/editProfile';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CreatePost from './components/pages/createPost';
 import UserRegistration from './components/pages/userRegistration';
@@ -25,6 +26,11 @@ function App() {
           exact
           path={`${process.env.PUBLIC_URL}/user-profile`}
           component={UserProfile}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/edit-profile`}
+          component={EditProfile}
         />
       </Router>
     </ThemeProvider>
