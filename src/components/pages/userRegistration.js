@@ -6,6 +6,7 @@ import NavBar from "./navBar";
 import SideBar from "./sideBar";
 import { FormLabel } from "@material-ui/core";
 import { InputBase } from "@mui/material";
+import axios from 'axios'
 import {
   Grid,
   Paper,
@@ -45,11 +46,24 @@ const allClubs = ["LDC", "IG"];
 
 const UserRegistration = () => {
   const [Clubs, setClubs] = useState([]);
-  const [formData, setFormData] = useState();
-  const [year, setYear] = useState();
-  const handleYear = (e) => {
-    setYear(e.target.value);
-  };
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
+    rollNo: '',
+    regNo: '',
+    joiningYear: ''
+  });
+  // const [year, setYear] = useState();
+
+  const {name, email, password, password2, regNo, rollNo, joiningYear} = formData;
+
+  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value})
+
+  // const handleYear = (e) => {
+  //   setYear(e.target.value);
+  // };
   const handleChange = (event) => {
     const {
       target: { value },
@@ -60,6 +74,37 @@ const UserRegistration = () => {
     );
   };
 
+  const onSubmit = async e => {
+    e.preventDefault();
+    if(password != password2){
+      console.log('Passwords Do not match')
+    }
+    else{
+      const newUser = {
+        name,
+        email,
+        password,
+        rollNo,
+        regNo,
+        joiningYear
+      }
+
+      try {
+        const config = {
+          headers: {
+            'Content-Type': 'Application/json'
+          }
+        }
+
+        const body = JSON.stringify(newUser);
+
+        const res = await axios.post('/api/users/register-user', body, config);
+        console.log(res.data);
+      } catch (err) {
+        console.error(err.response.data)
+      }
+    }
+  }
   return (
     <Fragment>
       <div className="container background-div" sx={{ bgcolor: "transparent" }}>
@@ -123,6 +168,9 @@ const UserRegistration = () => {
                         <TextField
                           id="standard-basic"
                           label="Full Name"
+                          name= 'name'
+                          value={name}
+                          onChange={e => onChange(e)}
                           variant="filled"
                           sx={{
                             color: "black",
@@ -136,6 +184,9 @@ const UserRegistration = () => {
                         <TextField
                           id="standard-basic"
                           label="College Email ID"
+                          name = 'email'
+                          value={email}
+                          onChange={e => onChange(e)}
                           variant="filled"
                           sx={{
                             color: "black",
@@ -149,6 +200,25 @@ const UserRegistration = () => {
                         <TextField
                           id="standard-basic"
                           label="Roll Number"
+                          name= 'rollNo'
+                          value={rollNo}
+                          onChange={e => onChange(e)}
+                          variant="filled"
+                          sx={{
+                            color: "black",
+                            fontWeight: "600",
+                            backgroundColor: "white",
+                            borderRadius: "5px",
+                          }}
+                        />
+                      </FormControl>
+                      <FormControl>
+                        <TextField
+                          id="standard-basic"
+                          label="Registration Number"
+                          name= 'regNo'
+                          value={regNo}
+                          onChange={e => onChange(e)}
                           variant="filled"
                           sx={{
                             color: "black",
@@ -168,16 +238,18 @@ const UserRegistration = () => {
                       sx={{ padding: "0 2rem" }}
                     >
                       <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">
+                        <InputLabel id="demo-simple-select-label" >
                           Year of Study
                         </InputLabel>
                         <Select
                           sx={{ backgroundColor: "white" }}
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          value={year}
+                          name= 'joiningYear'
+                          value={joiningYear}
+                          onChange={e => onChange(e)}
                           label="Year of Study"
-                          onChange={handleYear}
+                          // onChange={handleYear}
                         >
                           <MenuItem value={1}>First</MenuItem>
                           <MenuItem value={2}>Second</MenuItem>
@@ -191,6 +263,9 @@ const UserRegistration = () => {
                           label="Password"
                           variant="filled"
                           type="password"
+                          value={password}
+                          onChange={e => onChange(e)}
+                          name = 'password'
                           sx={{
                             color: "black",
                             fontWeight: "600",
@@ -204,7 +279,10 @@ const UserRegistration = () => {
                           id="standard-basic"
                           label="Confirm Password"
                           type="password"
+                          value={password2}
+                          onChange={e => onChange(e)}
                           variant="filled"
+                          name = 'password2'
                           sx={{
                             color: "black",
                             fontWeight: "600",
@@ -225,6 +303,8 @@ const UserRegistration = () => {
                   width: "20rem",
                   margin: "0 auto",
                 }}
+
+                onClick = {e => onSubmit(e)}
               >
                 REGISTER
               </Button>
