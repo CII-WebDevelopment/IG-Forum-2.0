@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Fragment } from 'react'
 import '../pages/login.css';
 import { styled } from '@mui/material/styles';
 import NavBar from './navBar'
@@ -37,6 +38,8 @@ const allClubs = [
 const UserRegistration = () => {
     
     const [Clubs, setClubs] = useState([]);
+    const [formData, setFormData] = useState();
+
 
     const handleChange = (event) => {
         const {
@@ -48,7 +51,7 @@ const UserRegistration = () => {
         );
       };
 
-    return (
+    return <Fragment>
     <div className='container background-div' sx={{bgcolor: 'transparent'}}>
         <Box sx={{bgcolor: 'transparent', alignItems: 'center'}}>
             <Paper sx={{maxWidth: '80%',
@@ -333,7 +336,7 @@ const UserRegistration = () => {
             </Paper>
         </Box>
     </div>
-  );
+    </Fragment>
 };
 
 export default UserRegistration;
