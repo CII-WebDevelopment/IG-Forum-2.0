@@ -8,6 +8,7 @@ import { Button } from '@mui/material';
 import { Box } from '@mui/system';
 //import theme from '../../theme';
 import { Stack } from '@mui/material';
+import { axios } from 'axios';
 /*
 export default function ScrollableTabsButtonForce() {
     const [value, setValue] = React.useState(0);
@@ -21,15 +22,31 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const LogIn = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleChange = (username, password, e) => {
-    setUsername(username);
-    setPassword(password);
-    console.log(username);
-    console.log(password);
-  };
+    const [formData, setFormData] = useState({
+      username: '',
+      password: ''
+    });
+    const {username,password} = formData;
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value})
+    const onSubmit = async e => {
+        e.preventDefault();
+        const user = {
+            username,
+            password
+        }
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'Application/json'
+                }
+            }
+            const body = JSON.stringify(user);
+            const res = await axios.post('/api/auth/user-login', body, config);
+            console.log(res.data);
+        } catch (err) {
+            console.error(err.response.data)
+        }
+    }
 
   return (
     <div className='container background-div'>
@@ -73,9 +90,43 @@ const LogIn = () => {
                   color='tertiary'
                   name='username'
                   size='small'
-                  onChange={(event) => {
-                    setUsername(event.target.value);
+                  value={username}
+                  onChange={e => onChange(e)}
+                  sx={{
+                    margin: '10',
+                    width: '90',
+                    height: '50%',
+                    color: 'white',
+                    borderColor: 'white',
                   }}
+                  FormHelperTextProps={{
+                    style: { backgroundColor: 'red', color: 'tertiary' },
+                    disabled: true
+                  }}
+                />
+              </div>
+            </Item>
+
+            <Item sx={{ backgroundColor: 'black', color: 'tertiary' }}>
+              <div className='text-field' sx={{ color: 'white' }}>
+                <TextField
+                  style={{
+                    backgroundColor: "black",
+                  }}
+                  InputProps={{
+                    style: {
+                      color: "white"
+                    }
+                  }}
+                  id='filled-basic'
+                  label='Password'
+                  variant='outlined'
+                  color='tertiary'
+                  type='password'
+                  name='password'
+                  size='small'
+                  value={password}
+                  onChange={e => onChange(e)}
                   sx={{
                     margin: '10',
                     width: '90',
@@ -92,34 +143,10 @@ const LogIn = () => {
             </Item>
 
             <Item sx={{ backgroundColor: 'black' }}>
-              <TextField
-                style={{
-                  backgroundColor: "black",
-                }}
-                InputProps={{
-                  style: {
-                    color: "white",
-                  }
-                }}
-                id='filled-basic'
-                label='Password'
-                variant='outlined'
-                color='tertiary'
-                size='small'
-                onChange={(event) => {
-                  setPassword(event.target.value);
-                }}
-                border='none'
-              />
-            </Item>
-
-            <Item sx={{ backgroundColor: 'black' }}>
               <Button
                 variant='contained'
-                onClick={(event) => {
-                  handleChange(username, password, event);
-                }}
                 size='small'
+                onClick = {e => onSubmit(e)}
               >
                 LOG IN
               </Button>
