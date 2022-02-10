@@ -9,6 +9,10 @@ import { Box } from '@mui/system';
 //import theme from '../../theme';
 import { Stack } from '@mui/material';
 import { axios } from 'axios';
+import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
+import {Redirect} from 'react-router-dom'
+import {login} from '../../actions/auth'
 /*
 export default function ScrollableTabsButtonForce() {
     const [value, setValue] = React.useState(0);
@@ -21,31 +25,38 @@ const Item = styled(Paper)(({ theme }) => ({
   border: 'white',
 }));
 
-const LogIn = () => {
+const LogIn = ({login, isAuthenticated}) => {
     const [formData, setFormData] = useState({
-      username: '',
+      email: '',
       password: ''
     });
-    const {username,password} = formData;
+    const {email,password} = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value})
     const onSubmit = async e => {
-        e.preventDefault();
-        const user = {
-            username,
-            password
-        }
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'Application/json'
-                }
-            }
-            const body = JSON.stringify(user);
-            const res = await axios.post('/api/auth/user-login', body, config);
-            console.log(res.data);
-        } catch (err) {
-            console.error(err.response.data)
-        }
+        // e.preventDefault();
+        // const user = {
+        //     email,
+        //     password
+        // }
+        // try {
+        //     const config = {
+        //         headers: {
+        //             'Content-Type': 'Application/json'
+        //         }
+        //     }
+        //     const body = JSON.stringify(user);
+        //     const res = await axios.post('/api/auth/user-login', body, config);
+        //     console.log(res.data);
+        // } catch (err) {
+        //     console.error(err.response.data)
+        // }
+
+        login(email, password);
+    }
+
+    //Redirect if logged in 
+    if(isAuthenticated){
+      return <Redirect to='/dashboard'></Redirect>
     }
 
   return (
@@ -85,12 +96,12 @@ const LogIn = () => {
                     }
                   }}
                   id='filled-basic'
-                  label='Username'
+                  label='email'
                   variant='outlined'
                   color='tertiary'
-                  name='username'
+                  name='email'
                   size='small'
-                  value={username}
+                  value={email}
                   onChange={e => onChange(e)}
                   sx={{
                     margin: '10',
@@ -157,5 +168,12 @@ const LogIn = () => {
     </div>
   );
 };
+LogIn.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+}
 
-export default LogIn;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+export default connect(mapStateToProps, {login})(LogIn);

@@ -7,6 +7,13 @@ import SideBar from "./sideBar";
 import { FormLabel } from "@material-ui/core";
 import { InputBase } from "@mui/material";
 import axios from 'axios'
+import {connect} from 'react-redux'
+import Alert from '../../components/layout/Alert'
+import {Redirect} from 'react-router-dom'
+import PropTypes from 'prop-types';
+
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import {
   Grid,
   Paper,
@@ -44,7 +51,7 @@ const MenuProps = {
 
 const allClubs = ["LDC", "IG"];
 
-const UserRegistration = () => {
+const UserRegistration = ({ setAlert, register, isAuthenticated }) => {
   const [Clubs, setClubs] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
@@ -76,37 +83,22 @@ const UserRegistration = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    if(password != password2){
-      console.log('Passwords Do not match')
+    if(password !== password2){
+      setAlert('Passwords Do not match','danger')
     }
     else{
-      const newUser = {
-        name,
-        email,
-        password,
-        rollNo,
-        regNo,
-        joiningYear
-      }
-
-      try {
-        const config = {
-          headers: {
-            'Content-Type': 'Application/json'
-          }
-        }
-
-        const body = JSON.stringify(newUser);
-
-        const res = await axios.post('/api/users/register-user', body, config);
-        console.log(res.data);
-      } catch (err) {
-        console.error(err.response.data)
-      }
-    }
+      register({name, email, password, password2, rollNo, regNo, joiningYear});
   }
+}
+
+if(isAuthenticated){
+  return <Redirect to='/dashboard'></Redirect>
+}
+
+
   return (
     <Fragment>
+     
       <div className="container background-div" sx={{ bgcolor: "transparent" }}>
         <Box
           sx={{
@@ -128,6 +120,7 @@ const UserRegistration = () => {
               justifyContent: "center",
             }}
           >
+            
             <Stack>
               <Item
                 sx={{
@@ -336,4 +329,13 @@ const UserRegistration = () => {
   );
 };
 
-export default UserRegistration;
+UserRegistration.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+export default connect(mapStateToProps, {setAlert, register })(UserRegistration);

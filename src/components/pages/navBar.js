@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
+import {connect} from 'react-redux'
+import PropTypes from 'prop-types';
+import {logout} from '../../actions/auth'
 import '../pages/login.css';
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -9,6 +12,7 @@ import { Stack } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Link } from '@mui/material';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { MapSharp } from '@material-ui/icons';
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -16,8 +20,9 @@ const Item = styled(Paper)(({ theme }) => ({
   color: 'black',
 }));
 
-const Navbar = () => {
+const Navbar = ({auth: {isAuthenticated, loading}}, logout) => {
   const [Search, setSearch] = useState('');
+
   return (
     <div className='container-styling'>
       <Paper
@@ -118,5 +123,13 @@ const Navbar = () => {
     </div>
   );
 };
+Navbar.propTypes = {
+  logou: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+}
 
-export default Navbar;
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, {logout})(Navbar);
