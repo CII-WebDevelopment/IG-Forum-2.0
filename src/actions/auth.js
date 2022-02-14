@@ -21,7 +21,7 @@ export const loadUser = () => async dispatch => {
     if(localStorage.token){
         setAuthToken(localStorage.token)
     }
-    console.log(localStorage.token)
+    // console.log(localStorage.token)
     try {
         const res = await axios.get('/api/auth')
         console.log('checked auth')
@@ -51,7 +51,7 @@ export const register = ({name, email, password, password2, rollNo, regNo, joini
             'Content-Type': 'application/json'
         }
     }
-    console.log('email ok')
+    // console.log('email ok')
     const body = JSON.stringify({name, email, password, password2, regNo, rollNo, joiningYear})
 
     try {

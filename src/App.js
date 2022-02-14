@@ -11,10 +11,13 @@ import Alert from './components/layout/Alert'
 import CreatePost from './components/pages/createPost';
 import UserRegistration from './components/pages/userRegistration';
 import { loadUser } from './actions/auth';
-
+import Dashboard from './components/dashboard/Dashboard'
 //Redux
 import {Provider} from 'react-redux';
 import store from './store';
+
+
+import PrivateRoute from './components/routing/PrivateRoute'
 
 import './App.css'
 import setAuthToken from './utils/setAuthToken';
@@ -40,8 +43,8 @@ const App = () => {
    
 
       <Router basename={'/'}>
-   
-        <Route
+      <Switch>
+      <Route
           exact
           path={`${process.env.PUBLIC_URL}/`}
           component={UserRegistration}
@@ -66,6 +69,13 @@ const App = () => {
           path={`${process.env.PUBLIC_URL}/login`}
           component={Login}
         />
+        <PrivateRoute
+        exact
+        path={`${process.env.PUBLIC_URL}/dashboard`}
+        component={Dashboard}
+      />
+      </Switch>
+        
 
       </Router>
     
