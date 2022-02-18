@@ -156,7 +156,7 @@ const User = [
 const UserProfile = () => {
   return (
     <div className='container background-div'>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <br />
       <br />
       <Box textAlign='center'>

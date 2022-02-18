@@ -8,10 +8,12 @@ import UserProfile from './components/pages/userProfile';
 import EditProfile from './components/pages/editProfile';
 import Login from './components/pages/login';
 import Alert from './components/layout/Alert'
+import Landing from './components/layout/Landing'
 import CreatePost from './components/pages/createPost';
 import UserRegistration from './components/pages/userRegistration';
 import { loadUser } from './actions/auth';
 import Dashboard from './components/dashboard/Dashboard'
+import userRegistration from './components/pages/userRegistration';
 //Redux
 import {Provider} from 'react-redux';
 import store from './store';
@@ -21,6 +23,7 @@ import PrivateRoute from './components/routing/PrivateRoute'
 
 import './App.css'
 import setAuthToken from './utils/setAuthToken';
+import Navbar from './components/pages/navBar';
 
 if(localStorage.token){
   setAuthToken(localStorage.token)
@@ -37,13 +40,14 @@ const App = () => {
    
 <Provider store ={store}>
   <Fragment>
-
+   
   <Alert></Alert> 
     <ThemeProvider theme={theme}>
    
-
+    <Navbar></Navbar>
       <Router basename={'/'}>
       <Switch>
+      <Route exact path ="/" component = {Landing}></Route>
       <Route
           exact
           path={`${process.env.PUBLIC_URL}/`}
@@ -63,6 +67,11 @@ const App = () => {
           exact
           path={`${process.env.PUBLIC_URL}/edit-profile`}
           component={EditProfile}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/register`}
+          component={UserRegistration}
         />
         <Route
           exact

@@ -124,7 +124,7 @@ const EditProfile = () => {
     return (
         <Fragment>
         <div className="container background-div" sx={{ bgcolor: "transparent" }}>
-            <NavBar></NavBar>
+            {/* <NavBar></NavBar> */}
             <Box
             sx={{
                 bgcolor: "transparent",
