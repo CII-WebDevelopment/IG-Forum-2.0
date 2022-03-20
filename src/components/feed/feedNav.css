@@ -1,0 +1,21 @@
+.navSearchBar {
+  color: red;
+  padding: 10px;
+  border-radius: 25px;
+  width: 15rem;
+  border: 0;
+}
+
+.navSearchBar:focus,
+.navSearchBar:focus-within {
+  border: none !important;
+}
+
+.nav_link {
+  cursor: pointer;
+  word-wrap: normal;
+}
+
+.nav_link:hover {
+  /* Add stuff here */
+}

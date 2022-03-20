@@ -1,0 +1,28 @@
+.feedMain_OuterGrid {
+  background-color: #3aafa9;
+  height: inherit;
+}
+
+.tag {
+  background-color: #def2f1;
+  padding: 4px 25px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: black;
+}
+
+.postsBox {
+  margin: 0 auto;
+  width: 90%;
+  background-color: none;
+  /* border is for dev purpose only */
+  border: 3px solid white;
+  justify-content: center !important;
+}
+
+@media only screen and (min-width: 1000px) {
+  .postsBox {
+    max-width: 60vw;
+    min-width: 800px;
+  }
+}

@@ -12,9 +12,10 @@
 } */
 
 html {
-  background: url("../../components/Images/Background_2.png") no-repeat center
-    fixed;
+  /* background: url("../../components/Images/Background_2.png") no-repeat center */
+  /* fixed; */
   width: 100%;
+  background: #3aafa9;
   height: 100%;
   background-size: cover;
   background-attachment: fixed;
