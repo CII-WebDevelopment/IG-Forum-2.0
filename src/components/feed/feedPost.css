@@ -34,11 +34,12 @@
 }
 
 .feedPost_footer_wrapper {
-  border: 1px solid black;
   background-color: black;
+  border-bottom-left-radius: 20px;
+  margin: 0;
 }
 
 .feedPost_footer_button {
-  border: none;
+  border: none !important;
   color: white !important;
 }

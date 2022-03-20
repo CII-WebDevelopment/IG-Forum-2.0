@@ -1,0 +1,41 @@
+.feedComments_outerBox {
+  border: 1px solid black;
+  border-radius: 20px;
+  margin: 0.25rem 1rem;
+  background-color: #def2f1;
+}
+
+.feedComments_stack {
+  padding: 15px;
+}
+
+.feedComments_userCommentPrompt {
+  margin: 10px 0;
+}
+
+.feedComments_userPfp {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: green;
+}
+
+.feedComments_userInput {
+}
+
+.feedComments_otherComment {
+  margin-left: 1rem !important;
+
+  margin-bottom: 0.5rem;
+}
+
+.feedComments_otherPfp {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 30px;
+  background-color: green;
+}
+
+.feedComments_otherComment {
+  font-size: 0.75rem !important;
+}
