@@ -18,7 +18,7 @@ import userRegistration from "./components/pages/userRegistration";
 import { Provider } from "react-redux";
 import store from "./store";
 import { FeedPage } from "./components/pages/feedPage";
-
+import { userProfileNew } from "./components/pages/userProfileNew";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 import "./App.css";
@@ -77,6 +77,11 @@ const App = () => {
                 exact
                 path={`${process.env.PUBLIC_URL}/feedNew`}
                 component={FeedPage}
+              />
+              <Route
+                exact
+                path={`${process.env.PUBLIC_URL}/userProfileNew`}
+                component={userProfileNew}
               />
               <PrivateRoute
                 exact
